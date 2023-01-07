@@ -9,6 +9,13 @@
   "author": "",
   "license": "ISC",
   "workspaces": [
-    "app"
-  ]
+    "app",
+    "shared",
+    "packages\\tsconfig",
+    "packages\\shared"
+  ],
+  "dependencies": {
+    "ts-toolbelt": "^9.6.0",
+    "zod": "^3.20.2"
+  }
 }
