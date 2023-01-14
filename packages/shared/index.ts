@@ -1,13 +1,5 @@
 import { z } from "zod";
-import {RootPath} from "./endpoints.types";
-import { F } from "ts-toolbelt"
-
-const profileObject = z.object({
-    id: z.string().uuid(),
-    fullName: z.string(),
-    email: z.string().email(),
-    profilePicture: z.string().url(),
-})
+import generateClient from "./generateClient";
 
 const root = {
     path: "",
@@ -15,27 +7,27 @@ const root = {
         {
             path: "profile",
             method: "GET",
-            params: z.never(),
-            response: z.never()
+            params: z.null(),
+            response: z.void()
         },
         {
             path: "me",
             method: "GET",
-            params: z.never(),
-            response: z.never(),
+            params: z.null(),
+            response: z.void(),
             sub: [
                 {
                     path: "account",
                     method: "GET",
-                    params: z.never(),
-                    response: z.never()
+                    params: z.null(),
+                    response: z.null()
                 },
             ]
         }
     ]
 } as const
 
-const url: RootPath<typeof root> = "/profile"
 
+const apiClient = generateClient<typeof root>(root)
 
-console.log(url)
+apiClient.getMe(null)

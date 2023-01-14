@@ -12,7 +12,8 @@
     "app",
     "shared",
     "packages\\tsconfig",
-    "packages\\shared"
+    "packages\\shared",
+    "api-gateway"
   ],
   "dependencies": {
     "ts-toolbelt": "^9.6.0",
