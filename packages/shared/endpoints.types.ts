@@ -30,4 +30,4 @@ export type ValidEndpointClient<T extends Endpoint & ValidEndpoint, P extends st
 }
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;
 
-export type APIClient<T extends Endpoint, P extends string> = T extends ValidEndpoint & ValidSub ? ValidEndpointClient<T, P> & UnionToIntersection<APIClient<T["sub"][number], Capitalize<T["path"]>>> : T extends ValidEndpoint ? ValidEndpointClient<T, P> : T extends ValidSub ? UnionToIntersection<APIClient<T["sub"][number], Capitalize<T["path"]>>> : {};
+export type APIClient<T extends Endpoint, P extends string> = T extends ValidEndpoint & ValidSub ? ValidEndpointClient<T, P> & UnionToIntersection<APIClient<T["sub"][number], `${P}${Capitalize<T["path"]>}`>> : T extends ValidEndpoint ? ValidEndpointClient<T, P> : T extends ValidSub ? UnionToIntersection<APIClient<T["sub"][number], `${P}${Capitalize<T["path"]>}`>> : {};
