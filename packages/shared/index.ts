@@ -46,3 +46,7 @@ const root = {
 } as const
 
 export const apiClient = generateClient<typeof root>(root)
+
+export const variables = {
+    siteName: "SocialMediaManager"
+}
